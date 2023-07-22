@@ -26,4 +26,12 @@ int print_percent(va_list arg)
 {
 
 }
+/**
+ * print_percent - Print a percent.
+ *@arg: list of arguments.
+ * return: Number of chars printed.
+ */
+int print_int(va_list arg)
+{
 
+}
