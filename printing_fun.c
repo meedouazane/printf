@@ -5,8 +5,19 @@
  * return: Number of chars printed.
  */
 int print_string(va_list arg)
-{
+ {
+	char *s = va_arg(args, char*);
+	int len = 0;
 
+	if (s == NULL)
+	s = "(null)";
+	while (*s != '\0')
+	{
+	write(1, s, 1);
+	s++;
+	len++;
+	}
+	return (len);
 }
 /**
  * print_c - Print a char.
@@ -15,7 +26,8 @@ int print_string(va_list arg)
  */
 int print_c(va_list arg)
 {
-
+	char c = va_arg(arg, int);
+	return (_putchar(c));
 }
 /**
  * print_percent - Print a percent.
@@ -24,7 +36,7 @@ int print_c(va_list arg)
  */
 int print_percent(va_list arg)
 {
-
+	return (_putchar('%'));
 }
 /**
  * print_percent - Print a percent.
