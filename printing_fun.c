@@ -2,10 +2,10 @@
 /**
  * print_string - Print a string.
  *@arg: list of arguments.
- * return: Number of chars printed.
+ * Return: Number of chars printed.
  */
 int print_string(va_list arg)
- {
+{
 	char *s = va_arg(args, char*);
 	int len = 0;
 
@@ -22,28 +22,46 @@ int print_string(va_list arg)
 /**
  * print_c - Print a char.
  *@arg: list of arguments.
- * return: Number of chars printed.
+ * Return: Number of chars printed.
  */
 int print_c(va_list arg)
 {
 	char c = va_arg(arg, int);
+
 	return (_putchar(c));
 }
 /**
  * print_percent - Print a percent.
  *@arg: list of arguments.
- * return: Number of chars printed.
+ * Return: Number of chars printed.
  */
 int print_percent(va_list arg)
 {
 	return (_putchar('%'));
 }
 /**
- * print_percent - Print a percent.
+ * print_int - print integer.
  *@arg: list of arguments.
- * return: Number of chars printed.
+ * Return: Number of chars printed.
  */
 int print_int(va_list arg)
 {
+	int len = 0, n, number, divisior = 1;
 
+	n = va_arg(arg, int);
+
+	if (n < 0)
+		len += _putchar('-');
+	while (n / divisor >= 10)
+	{
+		divisor = divisor * 10;
+	}
+	while (divisor != 0)
+	{
+		number = n / divisor;
+		len += _putchar('0' + number);
+		n = n % divisor;
+		divisor = divisor / 10;
+	}
+	return (len);
 }
