@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
 
 /**
  * _printf - print formatted string
@@ -11,7 +10,7 @@
 
 int _printf(const char *format, ...)
 {
-	t_pf p_functions[]
+	t_pf p_functions[] =
 	{
 		{"c", print_c},
 		{"s", print_string},

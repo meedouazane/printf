@@ -3,11 +3,7 @@
 
 #include <stdarg.h>
 #include <stdlib.h>
-
-int _putchar(char c);
-int _printf(const char *format, ...);
-int parser(char *format, int len, t_pf *p_functions, va_list arg);
-
+#include <unistd.h>
 
 
 /**
@@ -23,5 +19,17 @@ typedef struct pf
 	char *conv;
 	int (*func)(va_list);
 } t_pf;
+
+
+int _putchar(char c);
+int _printf(const char *format, ...);
+int parser(const char *format, int len, t_pf *p_functions, va_list arg);
+/* printing_fun */
+int print_c(va_list arg);
+int print_int(va_list arg);
+int print_percent(va_list arg);
+int print_int(va_list arg);
+int print_string(va_list arg);
+
 
 #endif

@@ -12,7 +12,7 @@
  *	On error, -1 is returned
  */
 
-int parser(char *format, int len, printing_func *p_functions, va_list arg)
+int parser(const char *format, int len, t_pf *p_functions, va_list arg)
 {
 	int i = 0, j;
 
