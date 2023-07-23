@@ -137,4 +137,48 @@ int print_hex_X(va_list arg)
 
 	return (len);
 }
+/**
+ * print_pointer- Printing a pointer.
+ * @arg : List of arguments.
+ * Return: Number of bytes.
+ */
+int print_pointer(va_list arg)
+{
+	void *ptr = va_arg(arg, void *);
+	unsigned long int num = (unsigned long int)ptr;
+	unsigned long int t;
+	char hex_d[] = "0123456789abcdef";
+	char digit;
+	int i, c = 0, num_digits = 0, skip = 1;
 
+	write(1, "0x", 2);
+	c += 2;
+	t = num;
+	if (num == 0)
+		num_digits = 1;
+	else
+	{
+		while (t != 0)
+		{
+			num_digits++;
+			t >>= 4;
+		}
+	}
+	for (i = (num_digits - 1) * 4; i >= 0; i -= 4)
+	{
+		digit = hex_d[(num >> i) & 0xF];
+		if (digit != '0')
+			skip = 0;
+		if (!skip)
+		{
+			write(1, &digit, 1);
+			c++;
+		}
+	}
+	if (skip)
+	{
+		write(1, "0", 1);
+		c++;
+	}
+	return (c);
+}

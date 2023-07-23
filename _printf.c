@@ -22,6 +22,7 @@ int _printf(const char *format, ...)
 		{"x", print_hex_x},
 		{"X", print_hex_X},
 		{"S", print_inS},
+		{"p", print_pointer},
 		{NULL, NULL}
 	};
 	int len = 0;
