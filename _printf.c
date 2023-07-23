@@ -21,6 +21,7 @@ int _printf(const char *format, ...)
 		{"u", print_unsgined_number},
 		{"x", print_hex_x},
 		{"X", print_hex_X},
+		{"S", print_inS},
 		{NULL, NULL}
 	};
 	int len = 0;
