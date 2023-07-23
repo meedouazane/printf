@@ -60,12 +60,14 @@ int print_int(va_list arg)
 	n = va_arg(arg, int);
 
 	if (n < 0)
+	{
 		len += _putchar('-');
+		n = -n;
+	}
 
 	while (n / divisior >= 10)
 	{
 		divisior *= 10;
-		n = -n;
 	}
 
 	while (divisior != 0)
