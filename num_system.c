@@ -64,3 +64,77 @@ int print_octal(va_list arg)
 	}
 	return (c);
 }
+
+/**
+ * print_hex_x - convert to hexadecimal.
+ * @arg: List of arguments.
+ * Return: Number of bytes.
+ */
+
+int print_hex_x(va_list arg)
+{
+	int i = 7, j, start, len = 0;
+	char arr[8] = {'0', '0', '0', '0', '0', '0', '0', '0'};
+	char hex_digits[] = "0123456789abcdef";
+	unsigned int num = va_arg(arg, unsigned int);
+
+	if (num == 0)
+	{
+		write(1, "0", 1);
+		return (1);
+	}
+
+	while (num != 0)
+	{
+		arr[i] = hex_digits[num % 16];
+		num /= 16;
+		i--;
+	}
+
+	start = i + 1;
+	for (j = start; j <= 7; j++)
+	{
+		write(1, &arr[j], 1);
+		len++;
+	}
+
+	return (len);
+}
+
+
+/**
+ * print_hex_X - convert to hexadecimal.
+ * @arg: List of arguments.
+ * Return: Number of bytes.
+ */
+
+int print_hex_X(va_list arg)
+{
+	int i = 7, j, start, len = 0;
+	char arr[8] = {'0', '0', '0', '0', '0', '0', '0', '0'};
+	char hex_digits[] = "0123456789ABCDEF";
+	unsigned int num = va_arg(arg, unsigned int);
+
+	if (num == 0)
+	{
+		write(1, "0", 1);
+		return (1);
+	}
+
+	while (num != 0)
+	{
+		arr[i] = hex_digits[num % 16];
+		num /= 16;
+		i--;
+	}
+
+	start = i + 1;
+	for (j = start; j <= 7; j++)
+	{
+		write(1, &arr[j], 1);
+		len++;
+	}
+
+	return (len);
+}
+

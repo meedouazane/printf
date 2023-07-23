@@ -19,6 +19,8 @@ int _printf(const char *format, ...)
 		{"b", print_binary},
 		{"o", print_octal},
 		{"u", print_unsgined_number},
+		{"x", print_hex_x},
+		{"X", print_hex_X},
 		{NULL, NULL}
 	};
 	int len = 0;
