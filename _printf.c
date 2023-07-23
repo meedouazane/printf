@@ -10,8 +10,7 @@
 
 int _printf(const char *format, ...)
 {
-	t_pf p_functions[] =
-	{
+	t_pf p_functions[] = {
 		{"c", print_c},
 		{"s", print_string},
 		{"%", print_percent},
