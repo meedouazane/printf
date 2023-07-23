@@ -29,6 +29,7 @@ int parser(const char *format, int len, t_pf *p_functions, va_list arg)
 				{
 					len += p_functions[j].func(arg);
 					i++;
+					break;
 				}
 			}
 			if (p_functions[j].conv == NULL && format[i + 1] != '\0')
@@ -37,7 +38,7 @@ int parser(const char *format, int len, t_pf *p_functions, va_list arg)
 				len += _putchar(format[i + 1]);
 				i++;
 			}
-			else if (p_functions[j].conv == NULL && format[i + 1] == '\0')
+			if (p_functions[j].conv == NULL && format[i + 1] == '\0')
 				return (-1);
 		}
 		else
