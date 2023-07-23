@@ -62,18 +62,18 @@ int print_int(va_list arg)
 	if (n < 0)
 		len += _putchar('-');
 
-	while (n / divisor >= 10)
+	while (n / divisior >= 10)
 	{
-		divisor *= 10;
+		divisior *= 10;
 	}
 
 
-	while (divisor != 0)
+	while (divisior != 0)
 	{
-		number = n / divisor;
+		number = n / divisior;
 		len += _putchar('0' + number);
-		n = n % divisor;
-		divisor = divisor / 10;
+		n = n % divisior;
+		divisior = divisior / 10;
 	}
 
 	return (len);
