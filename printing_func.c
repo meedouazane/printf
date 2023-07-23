@@ -55,26 +55,28 @@ int print_percent(__attribute__((unused))va_list arg)
 
 int print_int(va_list arg)
 {
-	int len = 0, n, number, divisior = 1;
+	int len = 0, n;
+	unsigned int num, number, divisior = 1;
 
 	n = va_arg(arg, int);
+	num = n;
 
 	if (n < 0)
 	{
 		len += _putchar('-');
-		n = -n;
+		num = -n;
 	}
 
-	while (n / divisior >= 10)
+	while (num / divisior >= 10)
 	{
 		divisior *= 10;
 	}
 
 	while (divisior != 0)
 	{
-		number = n / divisior;
+		number = num / divisior;
 		len += _putchar('0' + number);
-		n = n % divisior;
+		num = num % divisior;
 		divisior = divisior / 10;
 	}
 
