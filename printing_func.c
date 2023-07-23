@@ -65,8 +65,8 @@ int print_int(va_list arg)
 	while (n / divisior >= 10)
 	{
 		divisior *= 10;
+		n = -n;
 	}
-
 
 	while (divisior != 0)
 	{
