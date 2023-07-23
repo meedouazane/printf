@@ -82,3 +82,37 @@ int print_int(va_list arg)
 
 	return (len);
 }
+
+/**
+ * print_unsgined_number - a function to print unsigned integer
+ *@arg: list of arguments
+ *
+ * Return: numbers of bytes printed
+ *
+ */
+
+int print_unsgined_number(va_list arg)
+{
+	int len = 0;
+	unsigned int num, number, divisior = 1;
+
+	num = va_arg(arg, unsigned int);
+
+
+	while (num / divisior >= 10)
+	{
+		divisior *= 10;
+	}
+
+	while (divisior != 0)
+	{
+		number = num / divisior;
+		len += _putchar('0' + number);
+		num = num % divisior;
+		divisior = divisior / 10;
+	}
+
+	return (len);
+
+}
+
