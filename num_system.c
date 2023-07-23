@@ -14,7 +14,7 @@ int print_binary(va_list arg)
 
 	num = va_arg(arg, unsigned int);
 	array[0] = num / mask;
-	for (i = 1; i < 31; i++)
+	for (i = 1; i < 32; i++)
 	{
 		mask = mask / 2;
 		array[i] = (num / mask) % 2;
