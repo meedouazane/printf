@@ -31,3 +31,36 @@ int print_binary(va_list arg)
 	}
 	return (c);
 }
+/**
+ * print_octal - convert to octal.
+ * @arg: List of arguments.
+ * Return: Number of bytes.
+ */
+int print_octal(va_list arg)
+{
+	unsigned int num = va_arg(arg, unsigned int);
+	unsigned int a[32];
+	int j, i = 0, c = 0;
+	char z;
+
+	while (num != 0)
+	{
+		a[i] = num % 8;
+		num /= 8;
+		i++;
+	}
+
+	if (i == 0)
+	{
+		a[i] = 0;
+		i++;
+	}
+
+	for (j = i - 1; j >= 0; j--)
+	{
+		z = '0' + a[j];
+		write(1, &z, 1);
+		c++;
+	}
+	return (c);
+}
