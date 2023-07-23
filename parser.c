@@ -43,5 +43,5 @@ int parser(const char *format, int len, t_pf *p_functions, va_list arg)
 		else
 			len += _putchar(format[i]);
 	}
-	return (0);
+	return (len);
 }
