@@ -23,6 +23,7 @@ int _printf(const char *format, ...)
 		{"X", print_hex_X},
 		{"S", print_inS},
 		{"p", print_pointer},
+		{"r", print_reverse},
 		{NULL, NULL}
 	};
 	int len = 0;
