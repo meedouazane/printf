@@ -29,14 +29,17 @@ void print_in_hexa(int c)
 /**
  * print_inS - print custom %S
  * @arg: list of arguments
- *
+ *@flag:option
  * Return: number of bytes
  */
 
-int print_inS(va_list arg)
+int print_inS(va_list arg, int flag)
 {
 	int i, len = 0;
 	char c, *str = va_arg(arg, char *);
+
+	if (flag == 0 || flag == 1)
+		len = 0;
 
 	if (str == NULL)
 		return (-1);

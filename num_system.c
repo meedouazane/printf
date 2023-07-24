@@ -2,9 +2,10 @@
 /**
  * print_binary - converte to binary an unsigned int.
  * @arg : list of argumenet.
+ *@flag: option
  * Return: Number of bytes.
  */
-int print_binary(va_list arg)
+int print_binary(va_list arg, int flag)
 {
 	unsigned int i, num = 0, sum = 0;
 	unsigned int array[32];
@@ -12,6 +13,8 @@ int print_binary(va_list arg)
 	int c;
 	char b;
 
+	if (flag == 0 || flag == 1)
+		c = 0;
 	num = va_arg(arg, unsigned int);
 	array[0] = num / mask;
 	for (i = 1; i < 32; i++)
@@ -34,14 +37,18 @@ int print_binary(va_list arg)
 /**
  * print_octal - convert to octal.
  * @arg: List of arguments.
+ *@flag: option
  * Return: Number of bytes.
  */
-int print_octal(va_list arg)
+int print_octal(va_list arg, int flag)
 {
 	unsigned int num = va_arg(arg, unsigned int);
 	unsigned int a[32];
-	int j, i = 0, c = 0;
+	int j, i = 0, c;
 	char z;
+
+	if (flag == 0 || flag == 1)
+		c = 0;
 
 	while (num != 0)
 	{
@@ -68,15 +75,19 @@ int print_octal(va_list arg)
 /**
  * print_hex_x - convert to hexadecimal.
  * @arg: List of arguments.
+ *@flag: option
  * Return: Number of bytes.
  */
 
-int print_hex_x(va_list arg)
+int print_hex_x(va_list arg, int flag)
 {
-	int i = 7, j, start, len = 0;
+	int i = 7, j, start, len;
 	char arr[8] = {'0', '0', '0', '0', '0', '0', '0', '0'};
 	char hex_digits[] = "0123456789abcdef";
 	unsigned int num = va_arg(arg, unsigned int);
+
+	if (flag == 1 || flag == 1)
+		len = 0;
 
 	if (num == 0)
 	{
@@ -105,15 +116,20 @@ int print_hex_x(va_list arg)
 /**
  * print_hex_X - convert to hexadecimal.
  * @arg: List of arguments.
+ *@flag: option
  * Return: Number of bytes.
  */
 
-int print_hex_X(va_list arg)
+int print_hex_X(va_list arg, int flag)
 {
 	int i = 7, j, start, len = 0;
 	char arr[8] = {'0', '0', '0', '0', '0', '0', '0', '0'};
 	char hex_digits[] = "0123456789ABCDEF";
 	unsigned int num = va_arg(arg, unsigned int);
+
+	if (flag == 0 || flag == 1)
+		len = 0;
+
 
 	if (num == 0)
 	{
@@ -140,18 +156,19 @@ int print_hex_X(va_list arg)
 /**
  * print_pointer- Printing a pointer.
  * @arg : List of arguments.
+ *@flag: option
  * Return: Number of bytes.
  */
-int print_pointer(va_list arg)
+int print_pointer(va_list arg, int flag)
 {
 	void *ptr = va_arg(arg, void *);
-	unsigned long int num = (unsigned long int)ptr;
-	unsigned long int t;
+	unsigned long int num = (unsigned long int)ptr, t;
 	char hex_d[] = "0123456789abcdef";
-	char digit;
-	int i, c = 0, num_digits = 0, skip = 1, buffer_i = 0;
-	char buffer[LOCAL_BUFFER];
+	int i, c, num_digits = 0, skip = 1, buffer_i = 0;
+	char digit, buffer[LOCAL_BUFFER];
 
+	if (flag == 0 || flag == 1)
+		c = 0;
 	buffer[buffer_i++] = '0';
 	buffer[buffer_i++] = 'x';
 	c += 2;
