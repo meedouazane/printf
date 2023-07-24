@@ -149,9 +149,11 @@ int print_pointer(va_list arg)
 	unsigned long int t;
 	char hex_d[] = "0123456789abcdef";
 	char digit;
-	int i, c = 0, num_digits = 0, skip = 1;
+	int i, c = 0, num_digits = 0, skip = 1, buffer_i = 0;
+	char buffer[LOCAL_BUFFER];
 
-	write(1, "0x", 2);
+	buffer[buffer_i++] = '0';
+	buffer[buffer_i++] = 'x';
 	c += 2;
 	t = num;
 	if (num == 0)
@@ -171,14 +173,15 @@ int print_pointer(va_list arg)
 			skip = 0;
 		if (!skip)
 		{
-			write(1, &digit, 1);
+			buffer[buffer_i++] = digit;
 			c++;
 		}
 	}
 	if (skip)
 	{
-		write(1, "0", 1);
+		buffer[buffer_i++] = '0';
 		c++;
 	}
+	write(1, buffer, buffer_i);
 	return (c);
 }

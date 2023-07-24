@@ -21,7 +21,7 @@ typedef struct pf
 	int (*func)(va_list);
 } t_pf;
 
-
+#define LOCAL_BUFFER 1024
 int _putchar(char c);
 int _printf(const char *format, ...);
 int parser(const char *format, int len, t_pf *p_functions, va_list arg);
