@@ -145,8 +145,8 @@ int print_hex_X(va_list arg)
 int print_pointer(va_list arg)
 {
 	void *ptr = va_arg(arg, void *);
-	unsigned long long int num = (unsigned long long int)ptr;
-	unsigned long long int t;
+	unsigned long int num = (unsigned long int)ptr;
+	unsigned long int t;
 	char hex_d[] = "0123456789abcdef";
 	char digit;
 	int i, c = 0, num_digits = 0, skip = 1, buffer_i = 0;
