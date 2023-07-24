@@ -23,3 +23,41 @@ int print_reverse(va_list arg)
 	}
 	return (c);
 }
+/**
+ * print_rot13- prints the rot13'ed string.
+ * @arg: List of arguments.
+ * Return: Number of Bytes.
+ */
+int print_rot13(va_list arg)
+{
+	char rot;
+	char *str;
+	int i, j, c = 0;
+	char az[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char nm[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+	str = va_arg(arg, char *);
+	if (str == NULL)
+		str = "(AHYY)";
+	while (*str)
+	{
+		for (j = 0; az[j]; j++)
+		{
+			if (az[j] == str[i])
+			{
+				rot = nm[j];
+				write(1, &rot, 1);
+				c++;
+				break;
+			}
+		}
+		if (!az[j])
+		{
+			rot = str[i];
+			write(1, &rot, 1);
+			c++;
+		}
+		*str++;
+	}
+	return (c);
+}

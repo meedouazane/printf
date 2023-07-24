@@ -40,6 +40,5 @@ int print_hex_X(va_list arg);
 int print_inS(va_list arg);
 int print_pointer(va_list arg);
 int print_reverse(va_list arg);
-
-
+int print_rot13(va_list arg);
 #endif

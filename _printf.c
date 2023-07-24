@@ -24,6 +24,7 @@ int _printf(const char *format, ...)
 		{"S", print_inS},
 		{"p", print_pointer},
 		{"r", print_reverse},
+		{"R", print_rot13},
 		{NULL, NULL}
 	};
 	int len = 0;
