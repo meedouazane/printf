@@ -39,7 +39,7 @@ int print_rot13(va_list arg)
 	str = va_arg(arg, char *);
 	if (str == NULL)
 		str = "(AHYY)";
-	while (*str)
+	for (i = 0; str[i]; i++)	
 	{
 		for (j = 0; az[j]; j++)
 		{
@@ -57,7 +57,6 @@ int print_rot13(va_list arg)
 			write(1, &rot, 1);
 			c++;
 		}
-		*str++;
 	}
 	return (c);
 }
