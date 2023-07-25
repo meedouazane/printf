@@ -152,6 +152,12 @@ int print_pointer(va_list arg)
 	int i, c = 0, num_digits = 0, skip = 1, buffer_i = 0;
 	char buffer[LOCAL_BUFFER];
 
+	if (ptr == NULL)
+	{
+		write(1, "(nil)", 5);
+		return (5);
+	}
+
 	buffer[buffer_i++] = '0';
 	buffer[buffer_i++] = 'x';
 	c += 2;
