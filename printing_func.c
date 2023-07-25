@@ -3,17 +3,18 @@
 /**
  * print_string - Print a string.
  *@arg: list of arguments.
- *@flag: option
+ *@flag: option array
+ *@size: the size of flags array
  * Return: Number of chars printed
  */
 
-int print_string(va_list arg, int flag)
+int print_string(va_list arg, int *flag, int size)
 {
 	char *s = va_arg(arg, char*);
-	int len;
+	int len = 0;
 
-	if (flag == 1 || flag == 0)
-		len = 0;
+	(void)flag;
+	(void)size;
 
 	if (s == NULL)
 		s = "(null)";
@@ -29,17 +30,24 @@ int print_string(va_list arg, int flag)
 /**
  * print_c - Print a char.
  *@arg: list of arguments.
- *@flag: option
+ *@flag: option array
+ *@size: the size of flags array
  * Return: Number of chars printed.
  */
 
-int print_c(va_list arg, int flag)
+int print_c(va_list arg, int *flag, int size)
 {
-	int len;
+	int len = 0, i;
 	char c = va_arg(arg, int);
 
-	if (flag == 1 || flag == 0)
+	if (!size)
 		len = 0;
+	for (i = 0; i < size; i++)
+	{
+		if (flag[i] == 1 || flag[i] == 2 || flag[i] == 3)
+			len = 0;
+
+	}
 
 	len += _putchar(c);
 
@@ -49,16 +57,16 @@ int print_c(va_list arg, int flag)
 /**
  * print_percent - Print a percent.
  *@arg: list of arguments.
- *@flag: option
+ *@flag: option array
+ *@size: the size of flags array
  * Return: Number of chars printed.
  */
 
-int print_percent(__attribute__((unused))va_list arg, int flag)
+int print_percent(__attribute__((unused))va_list arg, int *flag, int size)
 {
 	int len = 0;
-
-	if (flag >= 0)
-		len = 0;
+	(void)flag;
+	(void)size;
 	len += _putchar('%');
 
 	return (len);
@@ -67,11 +75,12 @@ int print_percent(__attribute__((unused))va_list arg, int flag)
 /**
  * print_int - Print integer
  *@arg: list of arguments
- *@flag: option
+ *@flag: option array
+ *@size: the size of flags array
  * Return: numbers of bytes
  */
 
-int print_int(va_list arg, int flag)
+int print_int(va_list arg, int *flag, int size)
 {
 	int len = 0, n;
 	unsigned int num, number, divisior = 1;
@@ -79,21 +88,22 @@ int print_int(va_list arg, int flag)
 	n = va_arg(arg, int);
 	num = n;
 
-	/* if (flag == 0) */
-		/* len = 0; */
-	if (n < 0)
+	if (size == 0)
 	{
-		len += _putchar('-');
-		num = -n;
+		if (n < 0)
+		{
+			len += _putchar('-');
+			num = -n;
+		}
 	}
-	else if (n >= 0 && flag == 1)
-		len += _putchar('+');
-
+	else
+	{
+		int_flags(&n, &num, len, flag, size);
+	}
 	while (num / divisior >= 10)
 	{
 		divisior *= 10;
 	}
-
 	while (divisior != 0)
 	{
 		number = num / divisior;
@@ -101,28 +111,30 @@ int print_int(va_list arg, int flag)
 		num = num % divisior;
 		divisior = divisior / 10;
 	}
-
 	return (len);
 }
 
 /**
  * print_unsgined_number - a function to print unsigned integer
  *@arg: list of arguments
- *@flag: option
+ *@flag: option array
+ *@size: the size of flags array
  * Return: numbers of bytes printed
  *
  */
 
-int print_unsgined_number(va_list arg, int flag)
+int print_unsgined_number(va_list arg, int *flag, int size)
 {
-	int len;
+	int i, len = 0;
 	unsigned int num, number, divisior = 1;
 
 	num = va_arg(arg, unsigned int);
 
-	if (flag == 0 || flag == 1)
-		len = 0;
-
+	for (i = 0; i < size; i++)
+	{
+		if (flag[i] == 1 || flag[i] == 2 || flag[i] == 3)
+			len = 0;
+	}
 	while (num / divisior >= 10)
 	{
 		divisior *= 10;

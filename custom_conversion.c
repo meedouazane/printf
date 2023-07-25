@@ -33,12 +33,12 @@ void print_in_hexa(int c)
  * Return: number of bytes
  */
 
-int print_inS(va_list arg, int flag)
+int print_inS(va_list arg, int *flag, int size)
 {
 	int i, len = 0;
 	char c, *str = va_arg(arg, char *);
 
-	if (flag == 0 || flag == 1)
+	if (flag || size)
 		len = 0;
 
 	if (str == NULL)
