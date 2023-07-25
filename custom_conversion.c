@@ -30,6 +30,7 @@ void print_in_hexa(int c)
  * print_inS - print custom %S
  * @arg: list of arguments
  *@flag:option
+ *@size: array flags
  * Return: number of bytes
  */
 
