@@ -100,7 +100,7 @@ int print_int(va_list arg, int *flag, int size)
 	}
 	else
 	{
-		int_flags(&n, &num, len, flag, size);
+		len = int_flags(&n, &num, len, flag, size);
 	}
 	while (num / divisior >= 10)
 	{
