@@ -1,6 +1,7 @@
 #include "main.h"
+#include <valgrind/memcheck.h>
 
-int *check_flag(const char *c, int index, int *size);
+void check_flag(const char *c, int index, int *size,  int *ar_fg);
 /**
  * parser - use format string and va_list to iterate over them
  *	and print the corrsponding character to stdout using _putchar
@@ -15,7 +16,7 @@ int *check_flag(const char *c, int index, int *size);
 
 int parser(const char *format, int len, t_pf *p_functions, va_list arg)
 {
-	int i = 0, j, *flag = NULL, size = 0;
+	int i = 0, j, flag[10], size = 0;
 
 	/*if (!format[i]) */
 		/*return (len);*/
@@ -23,7 +24,7 @@ int parser(const char *format, int len, t_pf *p_functions, va_list arg)
 	{
 		if (format[i] == '%')
 		{
-			flag = check_flag(format, i + 1, &size);
+			check_flag(format, i + 1, &size, flag);
 			i += size;
 			/*Iterates through struct to find the right printing function*/
 			for (j = 0; p_functions[j].conv != NULL; j++)
@@ -43,20 +44,20 @@ int parser(const char *format, int len, t_pf *p_functions, va_list arg)
 			}
 			if (p_functions[j].conv == NULL && format[i + 1] == '\0')
 			{
-				if (flag != NULL)
+				/*if (flag != NULL)
 				{
 					free(flag);
 					flag = NULL;
-				}
+				}*/
 				return (-1);
 			}
-			if (flag != NULL)
+			/*if (flag != NULL)
 			{
 				free(flag);
 				flag = NULL;
-			}
+			}*/
 
-			/*VALGRIND_DO_LEAK_CHECK;*/
+			VALGRIND_DO_LEAK_CHECK;
 		}
 		else
 			len += _putchar(format[i]);
@@ -73,16 +74,16 @@ int parser(const char *format, int len, t_pf *p_functions, va_list arg)
  * Return: numbers array indicates the options found
  */
 
-int *check_flag(const char *c, int index, int *size)
+void check_flag(const char *c, int index, int *size,  int *ar_fg)
 {
-	int num_op = 0, *ar_fg = NULL, i = index, j, k = 0;
+	int num_op = 0, i = index, j, k = 0;
 	t_fg arr[] = {
 		{"+", 1},
 		{" ", 2},
 		{"#", 3},
 		{NULL, 0}
 	};
-	ar_fg = malloc(sizeof(int) * 10);
+	/*ar_fg = malloc(sizeof(int) * 10);*/
 	*size = 0; /* Reset size to 0 */
 
 	for (j = 0; j < 10; j++)  /* Reset ar_fg */
@@ -105,5 +106,4 @@ int *check_flag(const char *c, int index, int *size)
 
 	}
 
-	return (ar_fg);
 }
