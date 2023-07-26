@@ -49,7 +49,7 @@ int print_octal(va_list arg, int *flag, int size)
 {
 	unsigned int num = va_arg(arg, unsigned int);
 	unsigned int a[32];
-	int j, i = 0, index, c;
+	int j, i = 0, index, c = 0;
 	char z;
 
 	while (num != 0)
