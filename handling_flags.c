@@ -16,13 +16,26 @@ int int_flags(int *p_n, unsigned int *p_num, int len, int *flag, int size)
 
 	for (i = 0; i < size; i++)
 	{
-		if (*(p_n) < 0 && (flag[i] == 1 || flag[i] == 2))
+		if (*(p_n) < 0 && (flag[i] == 1 && flag[i + 1] == 2))
+		{
+			len += _putchar('-');
+			*p_num = -(*p_n);
+			i++;
+		}
+		else if (*(p_n) < 0 && (flag[i] == 2 && flag[i + 1] == 1))
+		{
+			len += _putchar('-');
+			*p_num = -(*p_n);
+			i++;
+		}
+		else if (*(p_n) < 0 && (flag[i] == 1 || flag[i] == 2))
 		{
 			len += _putchar('-');
 			*p_num = -(*p_n);
 		}
 
-		if (*(p_n) >= 0 && (flag[i] == 2 && flag[i + 1] == 1))
+		if (*(p_n) >= 0 && ((flag[i] == 2 && flag[i + 1] == 1) ||
+				(flag[i] == 1 && flag[i + 1] == 2)))
 		{
 			len += _putchar('+');
 			i++;
