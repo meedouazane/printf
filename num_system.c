@@ -101,8 +101,11 @@ int print_hex_x(va_list arg, int *flag, int size)
 	{
 		if (flag[index] == 3)
 		{
-			len += _putchar('0');
-			len += _putchar('x');
+			if (num!= 0)
+			{
+				len += _putchar('0');
+				len += _putchar('x');
+			}
 		}
 
 	}
